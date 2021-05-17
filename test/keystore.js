@@ -9,7 +9,7 @@ var addrprivkeyvector = require('./fixtures/addrprivkey100.json')
 // Test with 10000 private keys - takes about 40 seconds to run
 // var addrprivkeyvector = require('./fixtures/addrprivkey10000.json')
 
-var Transaction = require('ethereumjs-tx');
+var Transaction = require('vaporyjs-tx');
 
 describe("Keystore", function() {
 

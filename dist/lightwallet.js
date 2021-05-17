@@ -9,7 +9,7 @@ module.exports = {
 
 },{"./lib/encryption.js":2,"./lib/keystore.js":3,"./lib/signing.js":4,"./lib/txutils.js":5,"./lib/upgrade.js":6}],2:[function(require,module,exports){
 (function (Buffer){
-var util = require("ethereumjs-util");
+var util = require("vaporyjs-util");
 var nacl = require('tweetnacl');
 
 function nacl_encodeHex(msgUInt8Arr) {
@@ -168,10 +168,10 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":99,"ethereumjs-util":382,"tweetnacl":419}],3:[function(require,module,exports){
+},{"buffer":99,"vaporyjs-util":382,"tweetnacl":419}],3:[function(require,module,exports){
 (function (Buffer){
 var CryptoJS = require('crypto-js');
-var Transaction = require('ethereumjs-tx');
+var Transaction = require('vaporyjs-tx');
 var EC = require('elliptic').ec;
 var ec = new EC('secp256k1');
 var bitcore = require('bitcore-lib');
@@ -268,7 +268,7 @@ var KeyStore = function(mnemonic, pwDerivedKey, hdPathString) {
     //
     // Default hdRoot is m/0'/0'/0', the overall logic is
     // m/0'/Persona'/Purpose', where the 0' purpose is
-    // for standard Ethereum accounts.
+    // for standard Vapory accounts.
 
     var hdRoot = new Mnemonic(mnemonic).toHDPrivateKey().xprivkey;
     this.encHdRootPriv = KeyStore._encryptString(hdRoot, pwDerivedKey);
@@ -700,11 +700,11 @@ KeyStore.prototype.signTransaction = function (txParams, callback) {
 module.exports = KeyStore;
 
 }).call(this,require("buffer").Buffer)
-},{"./encryption":2,"./signing":4,"bitcore-lib":7,"bitcore-mnemonic":86,"buffer":99,"crypto-js":330,"elliptic":356,"ethereumjs-tx":379,"scrypt-async":418,"tweetnacl":419}],4:[function(require,module,exports){
+},{"./encryption":2,"./signing":4,"bitcore-lib":7,"bitcore-mnemonic":86,"buffer":99,"crypto-js":330,"elliptic":356,"vaporyjs-tx":379,"scrypt-async":418,"tweetnacl":419}],4:[function(require,module,exports){
 (function (Buffer){
 
-var Transaction = require("ethereumjs-tx")
-var util = require("ethereumjs-util")
+var Transaction = require("vaporyjs-tx")
+var util = require("vaporyjs-util")
 
 signTx = function (keystore, pwDerivedKey, rawTx, signingAddress, hdPathString) {
 
@@ -766,9 +766,9 @@ concatSig = function (v, r, s) {
 module.exports.concatSig = concatSig;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":99,"ethereumjs-tx":379,"ethereumjs-util":382}],5:[function(require,module,exports){
+},{"buffer":99,"vaporyjs-tx":379,"vaporyjs-util":382}],5:[function(require,module,exports){
 (function (Buffer){
-var Transaction = require('ethereumjs-tx');
+var Transaction = require('vaporyjs-tx');
 var coder = require('web3/lib/solidity/coder');
 var rlp = require('rlp');
 var CryptoJS = require('crypto-js');
@@ -876,11 +876,11 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":99,"crypto-js":330,"ethereumjs-tx":379,"rlp":417,"web3/lib/solidity/coder":423}],6:[function(require,module,exports){
+},{"buffer":99,"crypto-js":330,"vaporyjs-tx":379,"rlp":417,"web3/lib/solidity/coder":423}],6:[function(require,module,exports){
 var CryptoJS = require('crypto-js');
 var keystore = require('./keystore');
 
-var Transaction = require('ethereumjs-tx');
+var Transaction = require('vaporyjs-tx');
 var EC = require('elliptic').ec;
 var ec = new EC('secp256k1');
 var bitcore = require('bitcore-lib');
@@ -930,7 +930,7 @@ upgradeOldSerialized = function (oldSerialized, password, callback) {
 
 module.exports.upgradeOldSerialized = upgradeOldSerialized;
 
-},{"./keystore":3,"bitcore-lib":7,"bitcore-mnemonic":86,"crypto-js":330,"elliptic":356,"ethereumjs-tx":379,"scrypt-async":418,"tweetnacl":419}],7:[function(require,module,exports){
+},{"./keystore":3,"bitcore-lib":7,"bitcore-mnemonic":86,"crypto-js":330,"elliptic":356,"vaporyjs-tx":379,"scrypt-async":418,"tweetnacl":419}],7:[function(require,module,exports){
 (function (global,Buffer){
 'use strict';
 
@@ -65098,8 +65098,8 @@ module.exports={
 
 },{}],379:[function(require,module,exports){
 (function (global,Buffer){
-const ethUtil = require('ethereumjs-util')
-const fees = require('ethereum-common/params')
+const ethUtil = require('vaporyjs-util')
+const fees = require('vapory-common/params')
 const BN = ethUtil.BN
 
 // secp256k1n/2
@@ -65356,7 +65356,7 @@ Transaction.prototype.validate = function (stringError) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"buffer":99,"ethereum-common/params":381,"ethereumjs-util":382}],380:[function(require,module,exports){
+},{"buffer":99,"vapory-common/params":381,"vaporyjs-util":382}],380:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -65656,7 +65656,7 @@ exports.SHA3_RLP = new Buffer(exports.SHA3_RLP_S, 'hex')
 exports.BN = BN
 
 /**
- * [`rlp`](https://github.com/ethereumjs/rlp)
+ * [`rlp`](https://github.com/vaporyjs/rlp)
  * @var {Function}
  */
 exports.rlp = rlp
@@ -65882,8 +65882,8 @@ exports.rlphash = function (a) {
 }
 
 /**
- * Returns the ethereum address of a given public key.
- * Accepts "Ethereum public keys" and SEC1 encoded keys.
+ * Returns the vapory address of a given public key.
+ * Accepts "Vapory public keys" and SEC1 encoded keys.
  * @method publicToAddress
  * @param {Buffer} pubKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} sanitize Accept public keys in other formats
@@ -65900,7 +65900,7 @@ exports.pubToAddress = exports.publicToAddress = function (pubKey, sanitize) {
 }
 
 /**
- * Returns the ethereum public key of a given private key
+ * Returns the vapory public key of a given private key
  * @method privateToPublic
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
@@ -65912,7 +65912,7 @@ var privateToPublic = exports.privateToPublic = function (privateKey) {
 }
 
 /**
- * Returns the ethereum address of a given private key
+ * Returns the vapory address of a given private key
  * @method privateToAddress
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
@@ -67793,7 +67793,7 @@ module.exports={
 (function (Buffer){
 const assert = require('assert')
 /**
- * RLP Encoding based on: https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP
+ * RLP Encoding based on: https://github.com/vapory/wiki/wiki/%5BEnglish%5D-RLP
  * This function takes in a data, convert it to buffer if not, and a length for recursion
  *
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
@@ -67837,7 +67837,7 @@ function encodeLength (len, offset) {
 }
 
 /**
- * RLP Decoding based on: {@link https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP|RLP}
+ * RLP Decoding based on: {@link https://github.com/vapory/wiki/wiki/%5BEnglish%5D-RLP|RLP}
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
  * @returns {Array} - returns decode Array of Buffers containg the original message
  **/
@@ -72199,27 +72199,27 @@ var ETH_UNITS = [
     'Gwei',
     'szabo',
     'finney',
-    'femtoether',
-    'picoether',
-    'nanoether',
-    'microether',
-    'milliether',
+    'femtovapor',
+    'picovapor',
+    'nanovapor',
+    'microvapor',
+    'millivapor',
     'nano',
     'micro',
     'milli',
-    'ether',
+    'vapor',
     'grand',
-    'Mether',
-    'Gether',
-    'Tether',
-    'Pether',
-    'Eether',
-    'Zether',
-    'Yether',
-    'Nether',
-    'Dether',
-    'Vether',
-    'Uether'
+    'Mvapor',
+    'Gvapor',
+    'Tvapor',
+    'Pvapor',
+    'Evapor',
+    'Zvapor',
+    'Yvapor',
+    'Nvapor',
+    'Dvapor',
+    'Vvapor',
+    'Uvapor'
 ];
 
 module.exports = {
@@ -72315,33 +72315,33 @@ var sha3 = require('./sha3.js');
 var utf8 = require('utf8');
 
 var unitMap = {
-    'noether':      '0',    
+    'novapor':      '0',    
     'wei':          '1',
     'kwei':         '1000',
     'Kwei':         '1000',
     'babbage':      '1000',
-    'femtoether':   '1000',
+    'femtovapor':   '1000',
     'mwei':         '1000000',
     'Mwei':         '1000000',
     'lovelace':     '1000000',
-    'picoether':    '1000000',
+    'picovapor':    '1000000',
     'gwei':         '1000000000',
     'Gwei':         '1000000000',
     'shannon':      '1000000000',
-    'nanoether':    '1000000000',
+    'nanovapor':    '1000000000',
     'nano':         '1000000000',
     'szabo':        '1000000000000',
-    'microether':   '1000000000000',
+    'microvapor':   '1000000000000',
     'micro':        '1000000000000',
     'finney':       '1000000000000000',
-    'milliether':    '1000000000000000',
+    'millivapor':    '1000000000000000',
     'milli':         '1000000000000000',
-    'ether':        '1000000000000000000',
-    'kether':       '1000000000000000000000',
+    'vapor':        '1000000000000000000',
+    'kvapor':       '1000000000000000000000',
     'grand':        '1000000000000000000000',
-    'mether':       '1000000000000000000000000',
-    'gether':       '1000000000000000000000000000',
-    'tether':       '1000000000000000000000000000000'
+    'mvapor':       '1000000000000000000000000',
+    'gvapor':       '1000000000000000000000000000',
+    'tvapor':       '1000000000000000000000000000000'
 };
 
 /**
@@ -72555,12 +72555,12 @@ var toHex = function (val) {
  * Returns value of unit in Wei
  *
  * @method getValueOfUnit
- * @param {String} unit the unit to convert to, default ether
+ * @param {String} unit the unit to convert to, default vapor
  * @returns {BigNumber} value of the unit (in Wei)
  * @throws error if the unit is not correct:w
  */
 var getValueOfUnit = function (unit) {
-    unit = unit ? unit.toLowerCase() : 'ether';
+    unit = unit ? unit.toLowerCase() : 'vapor';
     var unitValue = unitMap[unit];
     if (unitValue === undefined) {
         throw new Error('This unit doesn\'t exists, please use the one of the following units' + JSON.stringify(unitMap, null, 2));
@@ -72569,24 +72569,24 @@ var getValueOfUnit = function (unit) {
 };
 
 /**
- * Takes a number of wei and converts it to any other ether unit.
+ * Takes a number of wei and converts it to any other vapor unit.
  *
  * Possible units are:
  *   SI Short   SI Full        Effigy       Other
- * - kwei       femtoether     babbage
- * - mwei       picoether      lovelace
- * - gwei       nanoether      shannon      nano
- * - --         microether     szabo        micro
- * - --         milliether     finney       milli
- * - ether      --             --
- * - kether                    --           grand
- * - mether
- * - gether
- * - tether
+ * - kwei       femtovapor     babbage
+ * - mwei       picovapor      lovelace
+ * - gwei       nanovapor      shannon      nano
+ * - --         microvapor     szabo        micro
+ * - --         millivapor     finney       milli
+ * - vapor      --             --
+ * - kvapor                    --           grand
+ * - mvapor
+ * - gvapor
+ * - tvapor
  *
  * @method fromWei
  * @param {Number|String} number can be a number, number string or a HEX of a decimal
- * @param {String} unit the unit to convert to, default ether
+ * @param {String} unit the unit to convert to, default vapor
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
 var fromWei = function(number, unit) {
@@ -72600,21 +72600,21 @@ var fromWei = function(number, unit) {
  *
  * Possible units are:
  *   SI Short   SI Full        Effigy       Other
- * - kwei       femtoether     babbage
- * - mwei       picoether      lovelace
- * - gwei       nanoether      shannon      nano
- * - --         microether     szabo        micro
- * - --         microether     szabo        micro
- * - --         milliether     finney       milli
- * - ether      --             --
- * - kether                    --           grand
- * - mether
- * - gether
- * - tether
+ * - kwei       femtovapor     babbage
+ * - mwei       picovapor      lovelace
+ * - gwei       nanovapor      shannon      nano
+ * - --         microvapor     szabo        micro
+ * - --         microvapor     szabo        micro
+ * - --         millivapor     finney       milli
+ * - vapor      --             --
+ * - kvapor                    --           grand
+ * - mvapor
+ * - gvapor
+ * - tvapor
  *
  * @method toWei
  * @param {Number|String|BigNumber} number can be a number, number string or a HEX of a decimal
- * @param {String} unit the unit to convert from, default ether
+ * @param {String} unit the unit to convert from, default vapor
  * @return {String|Object} When given a BigNumber object it returns one as well, otherwise a number
 */
 var toWei = function(number, unit) {

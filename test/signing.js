@@ -3,7 +3,7 @@ var keyStore = require('../lib/keystore')
 var upgrade = require('../lib/upgrade')
 var signing = require('../lib/signing')
 var fixtures = require('./fixtures/keystore')
-var Transaction = require('ethereumjs-tx')
+var Transaction = require('vaporyjs-tx')
 var nacl = require('tweetnacl')
 
 describe("Signing", function () {
@@ -13,9 +13,9 @@ describe("Signing", function () {
       var ks = new keyStore(fixtures.valid[0].mnSeed, pw)
       ks.generateNewAddress(pw)
       var addr = ks.getAddresses()[0]
-      expect('0x' + addr).to.equal(fixtures.valid[0].ethjsTxParams.from)
+      expect('0x' + addr).to.equal(fixtures.valid[0].vapjsTxParams.from)
 
-      var tx = new Transaction(fixtures.valid[0].ethjsTxParams)
+      var tx = new Transaction(fixtures.valid[0].vapjsTxParams)
       var rawTx = tx.serialize().toString('hex')
       expect(rawTx).to.equal(fixtures.valid[0].rawUnsignedTx)
 
@@ -38,8 +38,8 @@ describe("Signing", function () {
       var address = keystore.getAddresses(hdPath)[0];
       keystore.setDefaultHdDerivationPath(hdPath);
 
-      var hexSeedETH = keystore.exportPrivateKey(address, pwDerivedKey);
-      var addr0 = keyStore._computeAddressFromPrivKey(hexSeedETH);
+      var hexSeedVAP = keystore.exportPrivateKey(address, pwDerivedKey);
+      var addr0 = keyStore._computeAddressFromPrivKey(hexSeedVAP);
       expect(address).to.equal(addr0);
 
       var tx = new Transaction({from: '0x' + address,
@@ -62,7 +62,7 @@ describe("Signing", function () {
       var ks = new keyStore(fixtures.valid[0].mnSeed, pw)
       ks.generateNewAddress(pw)
       var addr = ks.getAddresses()[0]
-      expect('0x' + addr).to.equal(fixtures.valid[0].ethjsTxParams.from)
+      expect('0x' + addr).to.equal(fixtures.valid[0].vapjsTxParams.from)
 
       var msg = "this is a message"
 

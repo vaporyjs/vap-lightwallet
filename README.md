@@ -1,10 +1,10 @@
 # LightWallet
 
-A minimal ethereum javascript wallet.
+A minimal vapory javascript wallet.
 
 ## About
 
-LightWallet is a HD wallet that can store your private keys encrypted in the browser to allow you to run Ethereum dapps even if you're not running a local Ethereum node. It uses [BIP32][] and [BIP39][] to generate an HD tree of addresses from a randomly generated 12-word seed.
+LightWallet is a HD wallet that can store your private keys encrypted in the browser to allow you to run Vapory dapps even if you're not running a local Vapory node. It uses [BIP32][] and [BIP39][] to generate an HD tree of addresses from a randomly generated 12-word seed.
 
 LightWallet is primarily intended to be a signing provider for the [Hooked Web3 provider](https://github.com/ConsenSys/hooked-web3-provider) through the `keystore` module. This allows you to have full control over your private keys while still connecting to a remote node to relay signed transactions. Moreover, the `txutils` functions can be used to construct transactions when offline, for use in e.g. air-gapped coldwallet implementations.
 
@@ -12,16 +12,16 @@ The default BIP32 HD derivation path is `m/0'/0'/0'/i`.
 
 ## Security
 
-Please note that LightWallet has not been through a comprehensive security review at this point. It is still experimental software, intended for small amounts of Ether to be used for interacting with smart contracts on the Ethereum blockchain. Do not rely on it to store larger amounts of Ether yet.
+Please note that LightWallet has not been through a comprehensive security review at this point. It is still experimental software, intended for small amounts of Vapor to be used for interacting with smart contracts on the Vapory blockchain. Do not rely on it to store larger amounts of Vapor yet.
 
 
 ## Get Started
 
 ```
-npm install eth-lightwallet
+npm install vap-lightwallet
 ```
 
-The `eth-lightwallet` package contains `dist/lightwallet.min.js` that can be included in an HTML page:
+The `vap-lightwallet` package contains `dist/lightwallet.min.js` that can be included in an HTML page:
 
 ```html
 <html>

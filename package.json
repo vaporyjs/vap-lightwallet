@@ -1,11 +1,11 @@
 {
-  "name": "eth-lightwallet",
+  "name": "vap-lightwallet",
   "version": "2.3.1",
-  "description": "A lightweight ethereum javascript wallet.",
+  "description": "A lightweight vapory javascript wallet.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ConsenSys/eth-lightwallet.git"
+    "url": "https://github.com/vaporyjs/vap-lightwallet.git"
   },
   "scripts": {
     "build-js": "browserify index.js --s lightwallet | uglifyjs -c > dist/lightwallet.min.js",
@@ -14,7 +14,7 @@
     "coverage": "istanbul cover _mocha -- -R spec; open coverage/lcov-report/index.html"
   },
   "keywords": [
-    "ethereum",
+    "vapory",
     "blockchain",
     "transactions",
     "contracts",
@@ -53,8 +53,8 @@
     "bitcore-mnemonic": "^1.0.1",
     "crypto-js": "^3.1.5",
     "elliptic": "^3.1.0",
-    "ethereumjs-tx": "^1.1.1",
-    "ethereumjs-util": "^4.0.2",
+    "vaporyjs-tx": "^1.1.1",
+    "vaporyjs-util": "^4.0.2",
     "rlp": "^2.0.0",
     "scrypt-async": "^1.2.0",
     "tweetnacl": "0.13.2",

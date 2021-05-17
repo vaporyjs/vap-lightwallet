@@ -33,7 +33,7 @@
 
 * Change `Uint8Array.from()` to `new Uint8Array` in key derivation. H/T [chrisforrester](https://github.com/chrisforrester).
 
-* Update `ethereumjs-tx` library dependency.
+* Update `vaporyjs-tx` library dependency.
 
 * Hardened dependency on `bignumber.js` to specific commit.
 
