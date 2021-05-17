@@ -1,6 +1,6 @@
 {
   "name": "vap-lightwallet",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "A lightweight vapory javascript wallet.",
   "main": "index.js",
   "repository": {
@@ -62,12 +62,12 @@
   },
   "devDependencies": {
     "async": "^1.4.2",
-    "bluebird" : "^3.3.1",
+    "bluebird": "^3.3.1",
     "browserify": "^10.2.4",
     "chai": "^3.0.0",
     "istanbul": "^0.3.15",
     "mocha": "^2.2.5",
-    "uglify-js": "^2.4.23",
+    "uglify-js": "3.13.6",
     "@vapory/hooked-web3-provider": "1.0.0"
   }
 }
