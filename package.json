@@ -55,10 +55,10 @@
     "elliptic": "^3.1.0",
     "vaporyjs-tx": "^1.1.1",
     "vaporyjs-util": "^4.0.2",
-    "rlp": "^2.0.0",
+    "@vaporyjs/rlp": "^2.0.0",
     "scrypt-async": "^1.2.0",
     "tweetnacl": "0.13.2",
-    "web3": "^0.15.3"
+    "@vapory/web3": "0.15.3"
   },
   "devDependencies": {
     "async": "^1.4.2",
@@ -68,6 +68,6 @@
     "istanbul": "^0.3.15",
     "mocha": "^2.2.5",
     "uglify-js": "^2.4.23",
-    "hooked-web3-provider": "christianlundkvist/hooked-web3-provider#updates_web3_14"
+    "@vapory/hooked-web3-provider": "1.0.0"
   }
 }
